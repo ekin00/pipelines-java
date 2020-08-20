@@ -10,7 +10,8 @@ pool:
   vmImage: 'ubuntu-16.04' # other options: 'macOS-10.14', 'vs2017-win2016'
 
 name: $(TeamProject)_$(Build.DefinitionName)_$(SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.r)
-
+steps:
+- script: echo hello world
 
 steps:
 - task: Maven@3
