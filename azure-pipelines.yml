@@ -14,7 +14,7 @@ name: $(TeamProject)_$(Build.DefinitionName)_$(SourceBranchName)_$(Date:yyyyMMdd
 steps:
  
 - task: Maven@3
-  displayName: $(Build.BuildNumber)
+  displayName: -DbuildNumber=$(Build.BuildNumber) -DbuildPlanName=$(DefinitionName) -Dmodule.branch=$(SourceBranchName)
   inputs:
     mavenPomFile: 'pom.xml'
     mavenOptions: '-Xmx3072m'
