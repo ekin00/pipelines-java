@@ -15,7 +15,7 @@ pool:
 steps:
  
 - task: Maven@3
-  displayName: -DbuildNumber=$(Build.BuildNumber) -DbuildPlanName=$(Build.DefinitionName) -Dmodule.branch=$(Build.SourceBranchName)
+  displayName: -DbuildNumber=$(Build.BuildNumber) -DbuildPlanName=$(Build.DefinitionName) -Dmodule.branch=$(Build.SourceBranchName) id=$(Build.Repository.ID)
   inputs:
     mavenPomFile: 'pom.xml'
     mavenOptions: '-Xmx3072m'
