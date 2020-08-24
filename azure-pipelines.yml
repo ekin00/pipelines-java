@@ -13,10 +13,15 @@ pool:
 #name: $(TeamProject)_$(Build.DefinitionName)_$(SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.r)
 
 steps:
-- task: Ant@1
+ 
+- task: Maven@3
+  displayName: -DbuildNumber=$(Build.BuildNumber) -DbuildPlanName=$(Build.DefinitionName) -Dmodule.branch=$(Build.SourceBranchName)
   inputs:
-    buildFile: 'build.xml'
-    options: 
-    publishJUnitResults: true
-    testResultsFiles: '**/TEST-*.xml'
+    mavenPomFile: 'pom.xml'
+    mavenOptions: '-Xmx3072m'
     javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.11'
+    jdkArchitectureOption: 'x64'
+    publishJUnitResults: false
+    testResultsFiles: '**/TEST-*.xml'
+    goals: 'package'
